@@ -3,10 +3,9 @@ namespace dandan;
 public class CardDeserializationTests
 {
     [Fact]
-    public void LoadDandanCardList_DeserializesEmbeddedScryfallCardList()
+    public void DandanDeck_DeserializesEmbeddedScryfallCardList()
     {
-        var cardList = Dandan.CardList;
-        var cards = cardList.Cards;
+        var cards = Dandan.Deck.Cards.Select(entry => entry.Card).ToList();
 
         Assert.Equal(24, cards.Count);
 

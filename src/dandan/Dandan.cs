@@ -6,17 +6,14 @@ namespace dandan;
 /// </summary>
 public static class Dandan
 {
-    private static readonly Lazy<CardList> LazyCardList = new(LoadCardList);
-
-    private static readonly Lazy<Deck> LazyDeck = new(CreateDeck);
-
-    public static CardList CardList => LazyCardList.Value;
-
     public static Deck Deck => LazyDeck.Value;
 
     public static Library CreateLibrary(Random rand) => Library.FromDeck(Deck, rand);
 
-    private static CardList LoadCardList()
+
+    private static readonly Lazy<Deck> LazyDeck = new(LoadDeck);
+
+    private static Deck LoadDeck()
     {
         var assembly = typeof(Dandan).Assembly;
         var resourceName = assembly.GetManifestResourceNames()
@@ -24,17 +21,12 @@ public static class Dandan
         using var json = (resourceName is not null ? assembly.GetManifestResourceStream(resourceName) : null)
             ?? throw new InvalidOperationException("The embedded Dandan card list resource was not found.");
 
-        return SerDe.CardListDeserializer.Deserialize(json);
-    }
-
-    private static Deck CreateDeck()
-    {
-        var cards = CardList.Cards;
-        var deck = CardsAndQuantities.ToDictionary(entry => cards.First(c => c.Name == entry.Name), entry => entry.Count);
+        var cards = SerDe.CardListDeserializer.Deserialize(json);
+        var deck = CardQuantities.ToDictionary(entry => cards[entry.Name], entry => entry.Count);
         return new Deck(deck);
     }
 
-    private static readonly (int Count, string Name)[] CardsAndQuantities = [
+    private static readonly (int Count, string Name)[] CardQuantities = [
         // Creatures (10)
         (10, "Dandân"),
 

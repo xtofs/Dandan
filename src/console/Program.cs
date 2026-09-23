@@ -15,7 +15,10 @@ Console.WriteLine();
 var drawResult = library.Draw(7);
 foreach (var card in drawResult.Cards)
 {
-    Console.WriteLine("{0}", card.Name);
+    Console.WriteLine("{0,-24} {1,-24} {2,-12} {3}", card.Name, card.TypeLine, string.Join(",", card.ColorIdentity), card.ManaCost);
+
 }
+
+Console.WriteLine("number of cards in library: {0}", library.Count);
 
 

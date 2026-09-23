@@ -9,6 +9,8 @@ public sealed class Library(IReadOnlyList<Card> cards)
 {
     private readonly List<Card> _cards = [.. cards];
 
+    public int Count => _cards.Count;
+
     public static Library FromDeck(Deck deck, Random rand)
     {
         var cards = deck.Cards.SelectMany(c => Enumerable.Repeat(c.Card, c.Count)).ToList();
