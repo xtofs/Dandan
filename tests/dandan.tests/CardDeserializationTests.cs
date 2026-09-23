@@ -5,7 +5,7 @@ public class CardDeserializationTests
     [Fact]
     public void LoadDandanCardList_DeserializesEmbeddedScryfallCardList()
     {
-        var cardList = CardList.LoadDandanCardList();
+        var cardList = Dandan.CardList;
         var cards = cardList.Cards;
 
         Assert.Equal(24, cards.Count);
@@ -28,6 +28,6 @@ public class CardDeserializationTests
         var dandanCard = new Card { Name = "Dandân" };
         var deck = new Deck(new Dictionary<Card, int> { [dandanCard] = 10 });
 
-        Assert.Equal(10, deck.Cards[dandanCard]);
+        Assert.Equal(10, deck.Quantity(dandanCard));
     }
 }

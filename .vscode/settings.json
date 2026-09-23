@@ -1,3 +1,8 @@
 {
-    "dotnet.defaultSolution": "Dandan.slnx"
+    "dotnet.defaultSolution": "Dandan.slnx",
+    "cSpell.words": [
+        "decklist",
+        "Scries",
+        "scry"
+    ]
 }
