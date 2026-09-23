@@ -24,7 +24,7 @@ public static class Dandan
         using var json = (resourceName is not null ? assembly.GetManifestResourceStream(resourceName) : null)
             ?? throw new InvalidOperationException("The embedded Dandan card list resource was not found.");
 
-        return CardList.Deserialize(json);
+        return SerDe.CardListDeserializer.Deserialize(json);
     }
 
     private static Deck CreateDeck()

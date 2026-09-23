@@ -1,4 +1,4 @@
-namespace dandan;
+namespace dandan.SerDe;
 
 using System.Text.Json;
 using System.Text.Json.Serialization;
