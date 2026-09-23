@@ -1,0 +1,7 @@
+<Solution>
+  
+    <Project Path="src/console/console.csproj" />
+    <Project Path="src/dandan/dandan.csproj" />
+    <Project Path="tests/dandan.tests/Dandan.tests.csproj" />
+
+</Solution>

@@ -1,0 +1,399 @@
+{
+  "data": [
+    {
+      "id": "ac2e32d0-f172-4934-9d73-1bc2ab86586e",
+      "name": "Dandân",
+      "mana_cost": "{U}{U}",
+      "cmc": 2.0,
+      "type_line": "Creature — Fish",
+      "oracle_text": "This creature can't attack unless defending player controls an Island.\nWhen you control no Islands, sacrifice this creature.",
+      "power": "4",
+      "toughness": "1",
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "\"Catch good today. Start replacing crew tomorrow.\"\n—Faysal al-Mousa, fisher captain, log"
+    },
+    {
+      "id": "ad88e5ee-0eee-47af-a7b4-9bac044e1c8c",
+      "name": "Accumulated Knowledge",
+      "mana_cost": "{1}{U}",
+      "cmc": 2.0,
+      "type_line": "Instant",
+      "oracle_text": "Draw a card, then draw cards equal to the number of cards named Accumulated Knowledge in all graveyards.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "\"I have seen and heard much here. There are secrets within secrets. Let me show you.\"\n—Takara, to Eladamri"
+    },
+    {
+      "id": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
+      "name": "Brainstorm",
+      "mana_cost": "{U}",
+      "cmc": 1.0,
+      "type_line": "Instant",
+      "oracle_text": "Draw three cards, then put two cards from your hand on top of your library in any order.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "\"I have a plan. Actually, I have three.\""
+    },
+    {
+      "id": "8798a4f1-34bb-449d-a8cc-faf8bda8e0ab",
+      "name": "Crystal Spray",
+      "mana_cost": "{2}{U}",
+      "cmc": 3.0,
+      "type_line": "Instant",
+      "oracle_text": "Change the text of target spell or permanent by replacing all instances of one color word with another or one basic land type with another until end of turn.\nDraw a card.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "c548d140-3d81-4b33-9985-87703d316a83",
+      "name": "Dance of the Skywise",
+      "mana_cost": "{1}{U}",
+      "cmc": 2.0,
+      "type_line": "Instant",
+      "oracle_text": "Until end of turn, target creature you control becomes a blue Dragon Illusion with base power and toughness 4/4, loses all abilities, and gains flying.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "The Ojutai believe in the Great Wheel: those who best serve the dragonlord are destined to be reborn as dragons."
+    },
+    {
+      "id": "30202613-d05f-4f47-af97-d0b75ccac293",
+      "name": "Memory Lapse",
+      "mana_cost": "{1}{U}",
+      "cmc": 2.0,
+      "type_line": "Instant",
+      "oracle_text": "Counter target spell. If that spell is countered this way, put it on top of its owner's library instead of into that player's graveyard.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "What a lonely agony, the memory of memories lost."
+    },
+    {
+      "id": "a0f0c20c-184e-4d27-ae8b-933abb6fee0c",
+      "name": "Metamorphose",
+      "mana_cost": "{1}{U}",
+      "cmc": 2.0,
+      "type_line": "Instant",
+      "oracle_text": "Put target permanent an opponent controls on top of its owner's library. That opponent may put an artifact, creature, enchantment, or land card from their hand onto the battlefield.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "If it's not one thing, it's another."
+    },
+    {
+      "id": "692a5bfa-9a50-4610-acd7-19fc0a53f798",
+      "name": "Mind Bend",
+      "mana_cost": "{U}",
+      "cmc": 1.0,
+      "type_line": "Instant",
+      "oracle_text": "Change the text of target permanent by replacing all instances of one color word with another or one basic land type with another. (For example, you may change \"nonblack creature\" to \"nongreen creature\" or \"forestwalk\" to \"islandwalk.\" This effect lasts indefinitely.)",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "36fa9a0b-b0c9-43ea-ba11-99d7982f974e",
+      "name": "Mystical Tutor",
+      "mana_cost": "{U}",
+      "cmc": 1.0,
+      "type_line": "Instant",
+      "oracle_text": "Search your library for an instant or sorcery card, reveal it, then shuffle and put that card on top.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "The student searches the world for meaning. The master finds worlds of meaning in the search."
+    },
+    {
+      "id": "349ac7e6-af38-4dc3-abfe-369564c75630",
+      "name": "Predict",
+      "mana_cost": "{1}{U}",
+      "cmc": 2.0,
+      "type_line": "Instant",
+      "oracle_text": "Choose a card name, then target player mills a card. If a card with the chosen name was milled this way, you draw two cards. Otherwise, you draw a card.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "7ca8a427-5c20-4650-bbb5-9895e4f2c009",
+      "name": "Ray of Command",
+      "mana_cost": "{3}{U}",
+      "cmc": 4.0,
+      "type_line": "Instant",
+      "oracle_text": "Untap target creature an opponent controls and gain control of it until end of turn. That creature gains haste until end of turn. When you lose control of the creature, tap it.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "\"Heel.\""
+    },
+    {
+      "id": "3df927c0-9aa9-450b-ab2a-ae12c5489d57",
+      "name": "Supplant Form",
+      "mana_cost": "{4}{U}{U}",
+      "cmc": 6.0,
+      "type_line": "Instant",
+      "oracle_text": "Return target creature to its owner's hand. You create a token that's a copy of that creature.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "\"Ice can be shaped to any form, even the whisper of a memory.\"\n—Mytha, Temur shaman"
+    },
+    {
+      "id": "2dc0bafd-debc-4b62-9fe0-56b4aad02484",
+      "name": "Unsubstantiate",
+      "mana_cost": "{1}{U}",
+      "cmc": 2.0,
+      "type_line": "Instant",
+      "oracle_text": "Return target spell or creature to its owner's hand.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": "\"Nicely done, Jace. You always were good at disappearing acts.\"\n—Liliana Vess"
+    },
+    {
+      "id": "78b384d3-3adf-493a-8b89-bfe68fd1c3e2",
+      "name": "Vision Charm",
+      "mana_cost": "{U}",
+      "cmc": 1.0,
+      "type_line": "Instant",
+      "oracle_text": "Choose one —\n• Target player mills four cards.\n• Choose a land type and a basic land type. Each land of the first chosen type becomes the second chosen type until end of turn.\n• Target artifact phases out. (While it's phased out, it's treated as though it doesn't exist. It phases in before its controller untaps during their next untap step.)",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "f9ed455f-95cd-48ca-8b0d-4db259347bb6",
+      "name": "Diminishing Returns",
+      "mana_cost": "{2}{U}{U}",
+      "cmc": 4.0,
+      "type_line": "Sorcery",
+      "oracle_text": "Each player shuffles their hand and graveyard into their library. You exile the top ten cards of your library. Then each player draws up to seven cards.",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "806e5536-103b-4d6c-83b4-8659a55b25b5",
+      "name": "Mystic Retrieval",
+      "mana_cost": "{3}{U}",
+      "cmc": 4.0,
+      "type_line": "Sorcery",
+      "oracle_text": "Return target instant or sorcery card from your graveyard to your hand.\nFlashback {2}{R} (You may cast this card from your graveyard for its flashback cost. Then exile it.)",
+      "power": null,
+      "toughness": null,
+      "colors": [
+        "U"
+      ],
+      "color_identity": [
+        "R",
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "63eb18e0-c723-4de4-8498-c5362c75b2b4",
+      "name": "Halimar Depths",
+      "mana_cost": "",
+      "cmc": 0.0,
+      "type_line": "Land",
+      "oracle_text": "This land enters tapped.\nWhen this land enters, look at the top three cards of your library, then put them back in any order.\n{T}: Add {U}.",
+      "power": null,
+      "toughness": null,
+      "colors": [],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "bfac9395-7ca5-48dd-ab83-7c26ada12f61",
+      "name": "Izzet Boilerworks",
+      "mana_cost": "",
+      "cmc": 0.0,
+      "type_line": "Land",
+      "oracle_text": "This land enters tapped.\nWhen this land enters, return a land you control to its owner's hand.\n{T}: Add {U}{R}.",
+      "power": null,
+      "toughness": null,
+      "colors": [],
+      "color_identity": [
+        "R",
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "42f8591e-df30-49ec-962c-a75d32e6d9f5",
+      "name": "Lonely Sandbar",
+      "mana_cost": "",
+      "cmc": 0.0,
+      "type_line": "Land",
+      "oracle_text": "This land enters tapped.\n{T}: Add {U}.\nCycling {U} ({U}, Discard this card: Draw a card.)",
+      "power": null,
+      "toughness": null,
+      "colors": [],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "4cd86997-d7b9-4b5b-9488-11f5c679e4d3",
+      "name": "Mystic Sanctuary",
+      "mana_cost": "",
+      "cmc": 0.0,
+      "type_line": "Land — Island",
+      "oracle_text": "({T}: Add {U}.)\nThis land enters tapped unless you control three or more other Islands.\nWhen this land enters untapped, you may put target instant or sorcery card from your graveyard on top of your library.",
+      "power": null,
+      "toughness": null,
+      "colors": [],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "a340af37-c0a7-4f26-974b-95397b5c32f7",
+      "name": "Remote Isle",
+      "mana_cost": "",
+      "cmc": 0.0,
+      "type_line": "Land",
+      "oracle_text": "This land enters tapped.\n{T}: Add {U}.\nCycling {2} ({2}, Discard this card: Draw a card.)",
+      "power": null,
+      "toughness": null,
+      "colors": [],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "21fe2f1b-bfd1-4682-ae23-069300de3791",
+      "name": "Svyelunite Temple",
+      "mana_cost": "",
+      "cmc": 0.0,
+      "type_line": "Land",
+      "oracle_text": "This land enters tapped.\n{T}: Add {U}.\n{T}, Sacrifice this land: Add {U}{U}.",
+      "power": null,
+      "toughness": null,
+      "colors": [],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "cc63cd97-de9e-4d31-babb-aaad1277169e",
+      "name": "Temple of Epiphany",
+      "mana_cost": "",
+      "cmc": 0.0,
+      "type_line": "Land",
+      "oracle_text": "This land enters tapped.\nWhen this land enters, scry 1. (Look at the top card of your library. You may put that card on the bottom.)\n{T}: Add {U} or {R}.",
+      "power": null,
+      "toughness": null,
+      "colors": [],
+      "color_identity": [
+        "R",
+        "U"
+      ],
+      "flavor_text": null
+    },
+    {
+      "id": "f3cc07cd-cc79-4745-b0b7-eade60175cc3",
+      "name": "Island",
+      "mana_cost": "",
+      "cmc": 0.0,
+      "type_line": "Basic Land — Island",
+      "oracle_text": "({T}: Add {U}.)",
+      "power": null,
+      "toughness": null,
+      "colors": [],
+      "color_identity": [
+        "U"
+      ],
+      "flavor_text": null
+    }
+  ]
+}
