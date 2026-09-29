@@ -26,4 +26,6 @@ public class Card
     public ManaColor[] ColorIdentity { get; init; } = [];
 
     public string? FlavorText { get; init; }
+    public Action[] Actions { get; internal set; } = [];
+    public CardType Type { get; internal set; }
 }
