@@ -6,12 +6,14 @@ namespace dandan;
 /// </summary>
 public readonly struct Zone
 {
-    private readonly string _name;
+    public string Name { get; }
 
     private Zone(string name)
     {
-        _name = name;
+        Name = name;
     }
+
+    override public string ToString() => Name;
 
     public static readonly Zone Library = new("Library");
     public static readonly Zone Hand = new("Hand");
@@ -20,4 +22,6 @@ public readonly struct Zone
     public static readonly Zone Stack = new("Stack");
     public static readonly Zone Exile = new("Exile");
     public static readonly Zone Command = new("Command");
+
+
 }

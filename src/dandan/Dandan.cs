@@ -1,5 +1,7 @@
 namespace dandan;
 
+using System.Text.RegularExpressions;
+
 /// <summary>
 /// Entry point for everything specific to the Dandân deck.
 /// <see href="https://mtg.fandom.com/wiki/Forgetful_Fish#Typical_decklist">Forgetful Fish</see>
@@ -23,26 +25,51 @@ public static class Dandan
 
         var cards = SerDe.CardListDeserializer.Deserialize(json);
 
-        // fix up the Type based on the type line
-        foreach (var (name, card) in cards)
-        {
 
-            var parts = card.TypeLine.Split('—', StringSplitOptions.TrimEntries);
-            var first = parts.Length > 0 ? parts[0] : card.TypeLine;
-            card.Type = TypeMap[first];
-        }
-
-        // fix up actions for the card using the map
-        foreach (var (name, card) in cards)
+        // Apply fixups to each card before constructing the deck.
+        foreach (var card in cards.Values)
         {
-            if (CardToActionMap.TryGetValue(card.Name, out var actions))
+            foreach (var fixup in Fixups)
             {
-                card.Actions = actions;
+                fixup(card);
             }
         }
 
         var deck = CardQuantities.ToDictionary(entry => cards[entry.Name], entry => entry.Count);
         return new Deck(deck);
+    }
+
+    private static readonly Action<Card>[] Fixups = [FixUpActions, FixUpTypeFromTypeLine, FixUpTarget];
+
+    // fix up actions for the card using the map
+    private static void FixUpActions(Card card)
+    {
+        if (CardToActionMap.TryGetValue(card.Name, out var actions))
+        {
+            card.Actions = actions;
+        }
+    }
+
+    private static void FixUpTarget(Card card)
+    {
+
+        // 115. Targets 
+        // targets are object(s) and/or player(s) the spell or ability will affect.
+        // 115.1a [...] by using the phrase “target [something],” 
+
+        var match = Regexes.TargetRegex.Match(card.FlavorText ?? "");
+        if (match.Success)
+        {
+            card.Target = match.Captures[1].Value;
+        }
+    }
+
+    // fix up the Type based on the type line
+    private static void FixUpTypeFromTypeLine(Card card)
+    {
+        var parts = card.TypeLine.Split('—', StringSplitOptions.TrimEntries);
+        var first = parts.Length > 0 ? parts[0] : card.TypeLine;
+        card.Type = TypeMap[first];
     }
 
     private static readonly Dictionary<string, CardType> TypeMap = new Dictionary<string, CardType>
@@ -89,18 +116,33 @@ public static class Dandan
     ];
 
 
-    private static readonly Dictionary<string, Action[]> CardToActionMap = new Dictionary<string, Action[]> {
+    private static readonly Dictionary<string, IAction[]> CardToActionMap = new Dictionary<string, IAction[]> {
         { "Dandân", [ new Sacrifice() ]},
         { "Svyelunite Temple", [ new Sacrifice() ]},
         { "Memory Lapse", [ new Counter() ]},
         { "Mystical Tutor", [ new Search(Zone.Library), new Reveal() ]},
+        { "Mystic Retrieval", [
+            new ReturnTarget(Target.Instant|Target.Sorcery, ManaCost.Parse("{2}{R}"), Zone.Graveyard, Zone.Hand),
+            new Flashback(ManaCost.Parse("{2}{R}"))
+        ]},
         { "Diminishing Returns", [ new Shuffle(), new Exile() ]},
-        { "Supplant Form", [ new Create() ]},
+        { "Supplant Form", [
+            new Create(),
+            new ReturnTarget(Target.Creature, ManaCost.None, Zone.Battlefield, Zone.Hand)
+        ]},
         { "Predict", [ new Mill() ]},
         { "Vision Charm", [ new Mill() ]},
         { "Lonely Sandbar", [ new Discard() ]},
         { "Remote Isle", [ new Discard() ]},
         { "Temple of Epiphany", [ new Scry(1) ]},
-        { "Ray of Command", [ new Tap(), new Untap() ]},
+        { "Ray of Command", [ new Untap() ]},
     };
+
 }
+
+internal static partial class Regexes
+{
+    [GeneratedRegex(@"target\s+(\b\w+\b)", RegexOptions.IgnoreCase)]
+    public static partial Regex TargetRegex { get; }
+}
+

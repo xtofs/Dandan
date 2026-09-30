@@ -1,46 +1,29 @@
+namespace dandan.Text;
+
 using System.Text;
 
-public enum Align { Left, Right, Center }
-
-public enum TableFormat { Plain, Markdown }
-
-/// <summary>
-/// Describes one table column. <see cref="MaxWidth"/> caps the column; longer cell text is wrapped
-/// onto additional lines. <see cref="MinWidth"/> keeps a column from shrinking below a size.
-/// </summary>
-public sealed record Column(
-    string Header,
-    Align Align = Align.Left,
-    int? MinWidth = null,
-    int? MaxWidth = null)
+/// <summary>Writes tables described by a <see cref="TableSpec"/> to a <see cref="TextWriter"/>.</summary>
+public sealed class TableWriter(TextWriter writer, TableSpec spec)
 {
-    public static implicit operator Column(string header) => new(header);
-}
+    private IReadOnlyList<Column> Columns => spec.Columns;
 
-public static class TableWriter
-{
     /// <summary>
-    /// Writes rows as a plain-text table. Rows are enumerated once and buffered, since column
-    /// widths depend on all of them. Cells wider than their column's MaxWidth are word-wrapped.
+    /// Writes rows as a table. Rows are enumerated once and buffered, since column widths depend on
+    /// all of them. In plain format, cells wider than their column's MaxWidth are word-wrapped.
     /// </summary>
-    public static void Write(
-        TextWriter writer,
-        IReadOnlyList<Column> columns,
-        IEnumerable<IReadOnlyList<string>> rows,
-        TableFormat format = TableFormat.Plain,
-        string separator = " ")
+    public void Write(IEnumerable<IReadOnlyList<string>> rows)
     {
         var data = rows.ToList();
-        if (format == TableFormat.Markdown)
+        if (spec.Format == TableFormat.Markdown)
         {
-            WriteMarkdown(writer, columns, data);
+            WriteMarkdown(data);
             return;
         }
 
-        var widths = new int[columns.Count];
-        for (var i = 0; i < columns.Count; i++)
+        var widths = new int[Columns.Count];
+        for (var i = 0; i < Columns.Count; i++)
         {
-            var col = columns[i];
+            var col = Columns[i];
             var width = Math.Max(col.Header.Length, col.MinWidth ?? 0);
             foreach (var row in data)
             {
@@ -49,42 +32,36 @@ public static class TableWriter
             widths[i] = col.MaxWidth is int max ? Math.Min(width, Math.Max(max, 1)) : width;
         }
 
-        WriteRow(writer, columns, widths, columns.Select(c => c.Header).ToArray(), separator);
+        WriteRow(widths, Columns.Select(c => c.Header).ToArray());
         foreach (var row in data)
         {
-            WriteRow(writer, columns, widths, row, separator);
+            WriteRow(widths, row);
         }
     }
-
-    /// <summary>Convenience overload for the common case of unformatted, left-aligned columns.</summary>
-    public static void Write(
-        TextWriter writer, string[] headers, IEnumerable<string[]> rows, TableFormat format = TableFormat.Plain) =>
-        Write(writer, headers.Select(h => (Column)h).ToArray(), rows, format);
 
     /// <summary>
     /// GitHub-flavoured markdown table. MaxWidth is ignored (wrapping would break the row);
     /// newlines become &lt;br&gt; and pipes are escaped.
     /// </summary>
-    private static void WriteMarkdown(
-        TextWriter writer, IReadOnlyList<Column> columns, List<IReadOnlyList<string>> data)
+    private void WriteMarkdown(List<IReadOnlyList<string>> data)
     {
         var body = data
-            .Select(r => columns.Select((_, i) => MarkdownEscape(Cell(r, i))).ToArray())
+            .Select(r => Columns.Select((_, i) => MarkdownEscape(Cell(r, i))).ToArray())
             .ToList();
-        var headers = columns.Select(c => MarkdownEscape(c.Header)).ToArray();
+        var headers = Columns.Select(c => MarkdownEscape(c.Header)).ToArray();
 
-        var widths = new int[columns.Count];
-        for (var i = 0; i < columns.Count; i++)
+        var widths = new int[Columns.Count];
+        for (var i = 0; i < Columns.Count; i++)
         {
-            widths[i] = Math.Max(3, Math.Max(headers[i].Length, columns[i].MinWidth ?? 0));
+            widths[i] = Math.Max(3, Math.Max(headers[i].Length, Columns[i].MinWidth ?? 0));
             foreach (var row in body) widths[i] = Math.Max(widths[i], row[i].Length);
         }
 
         void Line(IReadOnlyList<string> cells) => writer.WriteLine(
-            "| " + string.Join(" | ", cells.Select((c, i) => Pad(c, widths[i], columns[i].Align))) + " |");
+            "| " + string.Join(" | ", cells.Select((c, i) => Pad(c, widths[i], Columns[i].Align))) + " |");
 
         Line(headers);
-        Line(columns.Select((c, i) => c.Align switch
+        Line(Columns.Select((c, i) => c.Align switch
         {
             Align.Right => new string('-', widths[i] - 1) + ":",
             Align.Center => ":" + new string('-', widths[i] - 2) + ":",
@@ -96,13 +73,9 @@ public static class TableWriter
     private static string MarkdownEscape(string text) =>
         text.Replace("|", "\\|").Replace("\r", "").Replace("\n", "<br>");
 
-    private static void WriteRow(
-        TextWriter writer,
-        IReadOnlyList<Column> columns,
-        int[] widths,
-        IReadOnlyList<string> row,
-        string separator)
+    private void WriteRow(int[] widths, IReadOnlyList<string> row)
     {
+        var columns = Columns;
         var cells = new List<string>[columns.Count];
         var height = 1;
         for (var i = 0; i < columns.Count; i++)
@@ -116,7 +89,7 @@ public static class TableWriter
             var sb = new StringBuilder();
             for (var i = 0; i < columns.Count; i++)
             {
-                if (i > 0) sb.Append(separator);
+                if (i > 0) sb.Append(spec.Separator);
                 var text = line < cells[i].Count ? cells[i][line] : "";
                 sb.Append(Pad(text, widths[i], columns[i].Align));
             }

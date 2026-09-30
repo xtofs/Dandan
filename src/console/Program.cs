@@ -1,4 +1,5 @@
 ﻿using dandan;
+using dandan.Text;
 
 
 var deck = Dandan.Deck;
@@ -19,22 +20,26 @@ var deck = Dandan.Deck;
 //     })
 // );
 
-TableWriter.Write(
-    Console.Out,
-    [
-        new Column("Name"),
-        new Column("Text", MaxWidth: 60),
-        new Column("Actions", MaxWidth: 40),
-    ],
+var spec = new TableSpec(
+[
+    new Column("Name"),
+    new Column("Text", MaxWidth: 60),
+    new Column("Actions", MaxWidth: 40),
+])
+{
+    // Format = args.Contains("--plain") ? TableFormat.Plain : TableFormat.Markdown,
+    Format = args.Contains("--markdown") ? TableFormat.Markdown : TableFormat.Plain,
+};
+
+new TableWriter(Console.Out, spec).Write(
     deck.Cards
-        .Where(c => c.Card.OracleText.StartsWith("Return"))
+        // .Where(c => c.Card.OracleText.StartsWith("Return"))
         .Select(c => new[]
         {
             c.Card.Name,
             c.Card.OracleText?.ToString() ?? "",
             string.Join(", ", c.Card.Actions),
-        }),
-    format: args.Contains("--plain") ? TableFormat.Plain : TableFormat.Markdown
+        })
 );
 
 // // show all unique type lines in the deck

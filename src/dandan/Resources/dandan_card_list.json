@@ -15,7 +15,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "\"Catch good today. Start replacing crew tomorrow.\"\n—Faysal al-Mousa, fisher captain, log"
+      "flavor_text": "\"Catch good today. Start replacing crew tomorrow.\"\n—Faysal al-Mousa, fisher captain, log",
+      "set": "tsb",
+      "collector_number": "19"
     },
     {
       "id": "ad88e5ee-0eee-47af-a7b4-9bac044e1c8c",
@@ -32,7 +34,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "\"I have seen and heard much here. There are secrets within secrets. Let me show you.\"\n—Takara, to Eladamri"
+      "flavor_text": "\"I have seen and heard much here. There are secrets within secrets. Let me show you.\"\n—Takara, to Eladamri",
+      "set": "a25",
+      "collector_number": "40"
     },
     {
       "id": "ec7d6864-7b6b-4f74-8474-9b9ec96b1d33",
@@ -49,7 +53,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "\"I have a plan. Actually, I have three.\""
+      "flavor_text": "\"I have a plan. Actually, I have three.\"",
+      "set": "frc",
+      "collector_number": "39"
     },
     {
       "id": "8798a4f1-34bb-449d-a8cc-faf8bda8e0ab",
@@ -66,7 +72,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "inv",
+      "collector_number": "50"
     },
     {
       "id": "c548d140-3d81-4b33-9985-87703d316a83",
@@ -83,7 +91,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "The Ojutai believe in the Great Wheel: those who best serve the dragonlord are destined to be reborn as dragons."
+      "flavor_text": "The Ojutai believe in the Great Wheel: those who best serve the dragonlord are destined to be reborn as dragons.",
+      "set": "dtk",
+      "collector_number": "50"
     },
     {
       "id": "30202613-d05f-4f47-af97-d0b75ccac293",
@@ -100,7 +110,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "What a lonely agony, the memory of memories lost."
+      "flavor_text": "What a lonely agony, the memory of memories lost.",
+      "set": "ema",
+      "collector_number": "60"
     },
     {
       "id": "a0f0c20c-184e-4d27-ae8b-933abb6fee0c",
@@ -117,7 +129,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "If it's not one thing, it's another."
+      "flavor_text": "If it's not one thing, it's another.",
+      "set": "scg",
+      "collector_number": "40"
     },
     {
       "id": "692a5bfa-9a50-4610-acd7-19fc0a53f798",
@@ -134,7 +148,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "10e",
+      "collector_number": "93"
     },
     {
       "id": "36fa9a0b-b0c9-43ea-ba11-99d7982f974e",
@@ -151,7 +167,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "The student searches the world for meaning. The master finds worlds of meaning in the search."
+      "flavor_text": "The student searches the world for meaning. The master finds worlds of meaning in the search.",
+      "set": "dmr",
+      "collector_number": "60"
     },
     {
       "id": "349ac7e6-af38-4dc3-abfe-369564c75630",
@@ -168,7 +186,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "c18",
+      "collector_number": "98"
     },
     {
       "id": "7ca8a427-5c20-4650-bbb5-9895e4f2c009",
@@ -185,7 +205,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "\"Heel.\""
+      "flavor_text": "\"Heel.\"",
+      "set": "ddm",
+      "collector_number": "29"
     },
     {
       "id": "3df927c0-9aa9-450b-ab2a-ae12c5489d57",
@@ -202,7 +224,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "\"Ice can be shaped to any form, even the whisper of a memory.\"\n—Mytha, Temur shaman"
+      "flavor_text": "\"Ice can be shaped to any form, even the whisper of a memory.\"\n—Mytha, Temur shaman",
+      "set": "frf",
+      "collector_number": "54"
     },
     {
       "id": "2dc0bafd-debc-4b62-9fe0-56b4aad02484",
@@ -219,7 +243,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": "\"Nicely done, Jace. You always were good at disappearing acts.\"\n—Liliana Vess"
+      "flavor_text": "\"Nicely done, Jace. You always were good at disappearing acts.\"\n—Liliana Vess",
+      "set": "m21",
+      "collector_number": "82"
     },
     {
       "id": "78b384d3-3adf-493a-8b89-bfe68fd1c3e2",
@@ -236,7 +262,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "vis",
+      "collector_number": "49"
     },
     {
       "id": "f9ed455f-95cd-48ca-8b0d-4db259347bb6",
@@ -253,7 +281,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "ema",
+      "collector_number": "46"
     },
     {
       "id": "806e5536-103b-4d6c-83b4-8659a55b25b5",
@@ -271,7 +301,9 @@
         "R",
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "inr",
+      "collector_number": "77"
     },
     {
       "id": "63eb18e0-c723-4de4-8498-c5362c75b2b4",
@@ -286,7 +318,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "dsc",
+      "collector_number": "282"
     },
     {
       "id": "bfac9395-7ca5-48dd-ab83-7c26ada12f61",
@@ -302,7 +336,9 @@
         "R",
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "otc",
+      "collector_number": "302"
     },
     {
       "id": "42f8591e-df30-49ec-962c-a75d32e6d9f5",
@@ -317,7 +353,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "eoc",
+      "collector_number": "166"
     },
     {
       "id": "4cd86997-d7b9-4b5b-9488-11f5c679e4d3",
@@ -332,7 +370,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "soc",
+      "collector_number": "388"
     },
     {
       "id": "a340af37-c0a7-4f26-974b-95397b5c32f7",
@@ -347,7 +387,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "dmr",
+      "collector_number": "254"
     },
     {
       "id": "21fe2f1b-bfd1-4682-ae23-069300de3791",
@@ -362,7 +404,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "me2",
+      "collector_number": "237"
     },
     {
       "id": "cc63cd97-de9e-4d31-babb-aaad1277169e",
@@ -378,7 +422,9 @@
         "R",
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "soc",
+      "collector_number": "412"
     },
     {
       "id": "f3cc07cd-cc79-4745-b0b7-eade60175cc3",
@@ -393,7 +439,9 @@
       "color_identity": [
         "U"
       ],
-      "flavor_text": null
+      "flavor_text": null,
+      "set": "trk",
+      "collector_number": "319"
     }
   ]
 }

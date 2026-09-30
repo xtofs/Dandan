@@ -3,7 +3,7 @@ namespace dandan.SerDe;
 using System.Text.Json.Serialization;
 
 /// <summary>
-/// The wire format of a single card as returned by the Scryfall API.
+///  The wire format of a single card as returned by the Scryfall API.
 /// </summary>
 internal sealed class ScryfallCard
 {
@@ -23,7 +23,7 @@ internal sealed class ScryfallCard
     public string TypeLine { get; set; } = string.Empty;
 
     [JsonPropertyName("oracle_text")]
-    public string? OracleText { get; set; }
+    public string OracleText { get; set; } = string.Empty;
 
     [JsonPropertyName("power")]
     public string? Power { get; set; }
@@ -34,11 +34,17 @@ internal sealed class ScryfallCard
     [JsonPropertyName("colors")]
     public ManaColor[] Colors { get; set; } = [];
 
-    [JsonPropertyName("color_identity")]
-    public ManaColor[] ColorIdentity { get; set; } = [];
+    // [JsonPropertyName("color_identity")]
+    // public ManaColor[] ColorIdentity { get; set; } = [];
 
     [JsonPropertyName("flavor_text")]
     public string? FlavorText { get; set; }
+
+    [JsonPropertyName("set")]
+    public string Set { get; set; } = string.Empty;
+
+    [JsonPropertyName("collector_number")]
+    public int CollectorNumber { get; set; }
 
     public Card ToCard() => new()
     {
@@ -51,7 +57,9 @@ internal sealed class ScryfallCard
         Power = Power,
         Toughness = Toughness,
         Colors = Colors,
-        ColorIdentity = ColorIdentity,
+        // ColorIdentity = ColorIdentity,
         FlavorText = FlavorText,
+        Set = Set,
+        CollectorNumber = CollectorNumber
     };
 }

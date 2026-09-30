@@ -18,6 +18,8 @@ CARDS='[
   {"name":"Svyelunite Temple"},{"name":"Temple of Epiphany"},{"name":"Island"}
 ]'
 
+# https://scryfall.com/docs/api/cards/collection
+
 curl -s -X POST https://api.scryfall.com/cards/collection \
   -H "Content-Type: application/json" \
   -d "{\"identifiers\":${CARDS}}" \
@@ -32,7 +34,9 @@ curl -s -X POST https://api.scryfall.com/cards/collection \
     toughness,
     colors,
     color_identity,
-    flavor_text
+    flavor_text,
+    set,
+    collector_number,
   }] }' > "$OUT"
 
 echo "Wrote $(pwd)/$OUT"

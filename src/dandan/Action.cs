@@ -1,19 +1,49 @@
 namespace dandan;
 
+using System.Text;
 
 
-public abstract record Action(KeywordAction Keyword) { }
+public interface IAction { }
 
 
-public record Sacrifice() : Action(KeywordAction.Sacrifice);
-public record Counter() : Action(KeywordAction.Counter);
-public record Search(params Zone[] Zones) : Action(KeywordAction.Search);
-public record Reveal() : Action(KeywordAction.Reveal);
-public record Shuffle() : Action(KeywordAction.Shuffle);
-public record Exile() : Action(KeywordAction.Exile);
-public record Create() : Action(KeywordAction.Create);
-public record Mill() : Action(KeywordAction.Mill);
-public record Discard() : Action(KeywordAction.Discard);
-public record Scry(int N) : Action(KeywordAction.Scry);
-public record Tap() : Action(KeywordAction.TapAndUntap);
-public record Untap() : Action(KeywordAction.TapAndUntap);
+public abstract record KeywordAction(KeywordActionKind Keyword) : IAction
+{
+    protected virtual bool PrintMembers(StringBuilder stringBuilder)
+    {
+        return false;
+    }
+}
+
+
+
+public record Sacrifice() : KeywordAction(KeywordActionKind.Sacrifice) { public override string ToString() => $"{Keyword}"; }
+
+public record Counter() : KeywordAction(KeywordActionKind.Counter) { public override string ToString() => $"{Keyword}"; }
+
+public record Search(params Zone[] Zones) : KeywordAction(KeywordActionKind.Search)
+{
+    public override string ToString() => $"{Keyword}({string.Join(", ", from zone in Zones select zone.Name)})";
+}
+
+public record Reveal() : KeywordAction(KeywordActionKind.Reveal) { public override string ToString() => $"{Keyword}"; }
+public record Shuffle() : KeywordAction(KeywordActionKind.Shuffle) { public override string ToString() => $"{Keyword}"; }
+public record Exile() : KeywordAction(KeywordActionKind.Exile) { public override string ToString() => $"{Keyword}"; }
+public record Create() : KeywordAction(KeywordActionKind.Create) { public override string ToString() => $"{Keyword}"; }
+public record Mill() : KeywordAction(KeywordActionKind.Mill) { public override string ToString() => $"{Keyword}"; }
+public record Discard() : KeywordAction(KeywordActionKind.Discard) { public override string ToString() => $"{Keyword}"; }
+public record Scry(int N) : KeywordAction(KeywordActionKind.Scry) { public override string ToString() => $"{Keyword}({N})"; }
+public record Untap() : KeywordAction(KeywordActionKind.Untap) { public override string ToString() => $"{Keyword}"; }
+public record Tap() : KeywordAction(KeywordActionKind.Tap) { public override string ToString() => $"{Keyword}"; }
+
+public record Recover(ManaCost Cost) : KeywordAction(KeywordActionKind.Recover) { public override string ToString() => $"{Keyword}({Cost})"; }
+
+public record Flashback(ManaCost Cost) : KeywordAction(KeywordActionKind.Flashback) { public override string ToString() => $"{Keyword}({Cost})"; }
+
+
+public record ReturnTarget(Target Target, ManaCost Cost, Zone From, Zone To) : IAction
+{
+    public override string ToString() => $"ReturnTarget({TargetsToString(Target)}, {From}, {To}{(Cost.IsNone ? "" : $", {Cost}")})";
+
+    private static string TargetsToString(Target target) => string.Join("|", Enum.GetValues<Target>().Where(t => target.HasFlag(t)));
+}
+

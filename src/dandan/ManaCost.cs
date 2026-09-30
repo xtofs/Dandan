@@ -13,6 +13,32 @@ public readonly struct ManaCost(IReadOnlyDictionary<ManaColor, int> mana, int co
 {
     private readonly FrozenDictionary<ManaColor, int> _mana = mana.ToFrozenDictionary();
 
+    public static ManaCostBuilder Builder() => new ManaCostBuilder();
+
+    public class ManaCostBuilder
+    {
+        private readonly Dictionary<ManaColor, int> _mana = new();
+        private int _colorless;
+
+        public ManaCostBuilder With(ManaColor color, int amount = 1)
+        {
+            if (!_mana.ContainsKey(color))
+            {
+                _mana[color] = 0;
+            }
+            _mana[color] += amount;
+            return this;
+        }
+
+        public ManaCostBuilder WithColorless(int amount = 1)
+        {
+            _colorless += amount;
+            return this;
+        }
+
+        public ManaCost Build() => new ManaCost(_mana, _colorless);
+    }
+
     private readonly int _colorless = colorless;
 
     public bool IsMulticolored => _mana.Count > 1;
@@ -31,6 +57,10 @@ public readonly struct ManaCost(IReadOnlyDictionary<ManaColor, int> mana, int co
 
     public int TotalMana => _mana.Values.Sum() + _colorless;
 
+    public static ManaCost None { get; } = new ManaCost(new Dictionary<ManaColor, int>(), 0);
+
+    public bool IsNone => _mana.Count == 0 && _colorless == 0;
+
     public override string ToString()
     {
         var stringBuilder = new StringBuilder();
@@ -47,13 +77,13 @@ public readonly struct ManaCost(IReadOnlyDictionary<ManaColor, int> mana, int co
             }
         }
 
-        return stringBuilder.ToString();
+        return stringBuilder.Length == 0 ? "None" : stringBuilder.ToString();
     }
 
 
-    public static ManaCost Parse(string s, IFormatProvider? provider)
+    public static ManaCost Parse(string s, IFormatProvider? provider = null)
     {
-        return TryParse(s, provider, out var result) ? result : throw new FormatException();
+        return TryParse(s, provider, out var result) ? result : throw new FormatException($"invalid Mana Cost {s}");
     }
 
     public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out ManaCost result)
@@ -87,12 +117,13 @@ public readonly struct ManaCost(IReadOnlyDictionary<ManaColor, int> mana, int co
             }
             else if (ManaColor.TryCreateFromSymbol(token, out var color))
             {
-                if (!mana.ContainsKey(color))
+                if (!mana.TryGetValue(color, out var value))
                 {
-                    mana[color] = 0;
+                    value = 0;
+                    mana[color] = value;
                 }
 
-                mana[color]++;
+                mana[color] = ++value;
             }
             else
             {

@@ -2,10 +2,10 @@ namespace dandan;
 
 /// <summary>
 /// 701. Keyword Actions
-public enum KeywordAction
+public enum KeywordActionKind
 {
     Counter,
-    Create,
+    Create, // 701.7. Create 
     Discard,
     Exile,
     Mill,
@@ -14,5 +14,8 @@ public enum KeywordAction
     Scry,   // 701.22. Scry ; “scry N”
     Search,
     Shuffle,
-    TapAndUntap,
+    Tap,
+    Untap,
+    Recover,
+    Flashback,
 }
