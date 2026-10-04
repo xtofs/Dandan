@@ -4,43 +4,60 @@ using dandan.Text;
 
 var deck = Dandan.Deck;
 
+// ShowActionsOfDeck(args, deck);
 
-// var table = FormatAsTable(
-//     ["Count", "Name", "Type", "Color", "Mana Cost", "Actions", "Target", "Gatherer URL"],
-//     deck.Cards.Select(c => new[]
-//     {
-//         c.Count.ToString(),
-//         c.Card.Name,
-//         c.Card.Type.Name,
-//         string.Join(",", c.Card.Colors),
-//         c.Card.ManaCost?.ToString() ?? "",
-//         string.Join(", ", c.Card.Actions),
-//         c.Card.Target ?? "",
-//         c.Card.GathererUrl.ToString()
-//     })
-// );
+ShowDeck(args, deck);
 
-var spec = new TableSpec(
-[
-    new Column("Name"),
-    new Column("Text", MaxWidth: 60),
-    new Column("Actions", MaxWidth: 40),
-])
+
+
+
+
+
+static void ShowDeck(string[] args, Deck deck)
 {
-    // Format = args.Contains("--plain") ? TableFormat.Plain : TableFormat.Markdown,
-    Format = args.Contains("--markdown") ? TableFormat.Markdown : TableFormat.Plain,
-};
+    var spec = new TableSpec([
+            new Column("Count   "),
+            new Column("Name"), new Column("Type"), new Column("Color"), new Column("Mana Cost"), new Column("Actions", MaxWidth: 24), new Column("Gatherer URL"),
+        ],
+        args.Contains("--markdown") ? TableFormat.Markdown : TableFormat.Plain);
+    var writer = new TableWriter(Console.Out, spec);
 
-new TableWriter(Console.Out, spec).Write(
-    deck.Cards
-        // .Where(c => c.Card.OracleText.StartsWith("Return"))
-        .Select(c => new[]
+    writer.Write(
+        deck.Cards.Select(static c => new[]
         {
+            c.Count.ToString(),
+            c.Card.Name,
+            c.Card.Type.Name,
+            string.Join(",", c.Card.Colors),
+            c.Card.ManaCost?.ToString() ?? "",
+            string.Join(", ", from a in c.Card.Actions select a.Name),
+            c.Card.GathererUrl.ToString()
+        }));
+}
+
+static void ShowActionsOfDeck(string[] args, Deck deck)
+{
+    var spec = new TableSpec([
+        new Column("Name"),
+            new Column("Text", MaxWidth: 60),
+            new Column("Actions", MaxWidth: 40),
+        ])
+    {
+        // Format = args.Contains("--plain") ? TableFormat.Plain : TableFormat.Markdown,
+        Format = args.Contains("--markdown") ? TableFormat.Markdown : TableFormat.Plain,
+    };
+
+    new TableWriter(Console.Out, spec).Write(
+        deck.Cards
+            // .Where(c => c.Card.OracleText.StartsWith("Return"))
+            .Select(c => new[]
+            {
             c.Card.Name,
             c.Card.OracleText?.ToString() ?? "",
             string.Join(", ", c.Card.Actions),
-        })
-);
+            })
+    );
+}
 
 // // show all unique type lines in the deck
 // var typeLines = deck.Cards.Select(c => c.Card.TypeLine).ToHashSet();

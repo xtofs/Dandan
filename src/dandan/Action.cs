@@ -3,7 +3,10 @@ namespace dandan;
 using System.Text;
 
 
-public interface IAction { }
+public interface IAction
+{
+    public string Name => GetType().Name;
+}
 
 
 public abstract record KeywordAction(KeywordActionKind Keyword) : IAction
